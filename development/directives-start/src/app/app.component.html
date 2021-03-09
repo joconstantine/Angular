@@ -6,7 +6,7 @@
         (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
       <ul class="list-group">
-        <div *ngIf="onlyOdd">
+        <!-- <div *ngIf="onlyOdd">
           <li
             class="list-group-item"
             [ngClass]="{odd: odd % 2 !== 0}"
@@ -23,11 +23,38 @@
             *ngFor="let even of evenNumbers">
             {{ even }}
           </li>
+        </div> -->
+        <div *appUnless="!onlyOdd">
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: odd % 2 !== 0}"
+            [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'yellow' : 'transparent' }"
+            *ngFor="let odd of oddNumbers">
+            {{ odd }}
+          </li>
+        </div>
+        <div *appUnless="onlyOdd">
+          <li
+            class="list-group-item"
+            [ngClass]="{odd: even % 2 !== 0}"
+            [ngStyle]="{backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent' }"
+            *ngFor="let even of evenNumbers">
+            {{ even }}
+          </li>
         </div>
       </ul>
+      <p appBasicHighlight>Style me with a basic directive!</p>
+      <p [appBetterHighlight]="'red'" 
+          defaultColor="yellow">Style me with a better directive!</p>
       <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template>
+      <div [ngSwitch]="value"> 
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is Default</p>
+      </div>
     </div>
   </div>
 </div>
