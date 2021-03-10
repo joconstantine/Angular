@@ -1,5 +1,4 @@
 import { EventEmitter } from "@angular/core";
-import { runInThisContext } from "vm";
 import { Ingredient } from "../shared/ingredient.model";
 
 export class ShoppingListService {
@@ -17,5 +16,11 @@ export class ShoppingListService {
 
     getIngredients(){
         return this.ingredients.slice();//to avoid return the reference
+    }
+
+    addIngredients(ingredients: Ingredient[])
+    {
+        this.ingredients.push(...ingredients);
+        this.ingredientsChanged.emit(this.ingredients.slice());
     }
 }
