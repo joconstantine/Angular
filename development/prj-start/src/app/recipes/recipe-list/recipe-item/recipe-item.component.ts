@@ -1,3 +1,4 @@
+import { InvokeFunctionExpr } from '@angular/compiler';
 import { Output } from '@angular/core';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Recipe } from '../../recipe.model';
@@ -10,16 +11,12 @@ import { RecipeService } from '../../recipe.service';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
-  @Output() recipeSelected = new EventEmitter<void>();
+  @Input() index: number;
 
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-  }
-
-  onSelected() {
-    this.recipeService.recipeSelected.emit(this.recipe);
   }
 
 }
