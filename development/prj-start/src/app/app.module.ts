@@ -15,6 +15,7 @@ import { AuthEffects } from './auth/store/auth.effects';
 import { RecipesEffects } from './recipes/store/recipe.effects';
 import * as fromApp from './store/app.reducer';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { environment } from 'src/environments/environment';
     StoreRouterConnectingModule.forRoot(),
     SharedModule,
     CoreModule,
+    BrowserAnimationsModule,
   ],
   // providers: [LoggingService],
   bootstrap: [AppComponent],
